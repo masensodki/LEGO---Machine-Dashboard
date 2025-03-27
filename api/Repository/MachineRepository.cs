@@ -1,3 +1,4 @@
+using System.Linq;
 using api.Data;
 using api.Models;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,9 @@ namespace api.Repository
 
         public async Task<List<Machine>> GetAllAsync()
         {
-            return await _dbContext.Machines.OrderByDescending(s => s.Name).ToListAsync();
+            return await _dbContext.Machines.AsQueryable()
+                .OrderBy(s => s.Name)
+                .ToListAsync();
         }
 
         public async Task<Machine?> GetAsync(string id)
