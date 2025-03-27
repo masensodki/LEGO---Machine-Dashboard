@@ -1,6 +1,8 @@
-.container {
-  padding: 40px;
-}
+$primary-bg: #5a5a5a;
+$primary-text: white;
+$secondary-bg: rgb(231, 233, 235);
+$border-color: #cccccc;
+
 table {
   border-collapse: collapse;
   border-radius: 16px;
@@ -8,28 +10,14 @@ table {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
+
+  // Shared styles for table cells
   td,
   th {
     padding: 0 16px;
-  }
-
-  thead tr {
-    height: 60px;
-    background: rgba(255, 213, 2, 0.4);
-    font-size: 16px;
-  }
-
-  tbody tr {
-    height: 48px;
-    border-bottom: 1px solid #e3f1d5;
-    &:last-child {
-      border: 0;
-    }
-  }
-
-  td,
-  th {
     text-align: left;
+
+    // Alignment modifiers
     &.l {
       text-align: right;
     }
@@ -38,6 +26,47 @@ table {
     }
     &.r {
       text-align: center;
+    }
+  }
+
+  // Header row styles
+  thead tr {
+    height: 60px;
+    font-size: 16px;
+    background: $primary-bg;
+    color: $primary-text;
+  }
+
+  // Body row styles
+  tbody tr {
+    height: 48px;
+    border-bottom: 1px solid $border-color;
+
+    &:last-child {
+      border: 0;
+    }
+
+    &:nth-child(odd) {
+      background-color: $secondary-bg;
+    }
+
+    .state-button {
+      display: block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: grey;
+      margin-left: 16px;
+      &.free {
+        background-color: #da291c;
+      }
+      &.winddown,
+      &.starting {
+        background-color: #ffd700;
+      }
+      &.busy {
+        background-color: #008000;
+      }
     }
   }
 }

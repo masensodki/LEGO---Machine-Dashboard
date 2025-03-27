@@ -1,9 +1,15 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
-import createMachineQueryOptions from "../../queryOptions/createMachineQueryOptions";
+import { Machine } from "../../queryOptions/createMachineQueryOptions";
 import "./table.scss";
 
-export default function Table() {
-  const { data } = useSuspenseQuery(createMachineQueryOptions());
+interface TableProps {
+  data: Machine[];
+}
+
+export default function Table({ data }: TableProps) {
+
+  if (!data || data.length === 0) {
+    return <div className="container">No data available</div>;
+  }
 
   return (
     <div className="container">
@@ -20,7 +26,11 @@ export default function Table() {
             <tr key={machine.id}>
               <td>{machine.id}</td>
               <td>{machine.name}</td>
-              <td>{machine.state}</td>
+                <td>
+                <span
+                  className={`state-button ${String(machine.state).toLowerCase()}`}
+                />
+                </td>
             </tr>
           ))}
         </tbody>

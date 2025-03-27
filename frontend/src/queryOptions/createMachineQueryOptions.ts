@@ -1,7 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 
 const url = import.meta.env.VITE_APP_API_ENDPOINT;
-console.log(url);
 
 export default function createMachineQueryOptions() {
   return queryOptions({
@@ -23,7 +22,7 @@ const getMachines = async (): Promise<Machine[]> => {
   return json;
 };
 
-type Machine = {
+export type Machine = {
   id: string;
   name: string;
   state: string;
