@@ -1,7 +1,7 @@
 import Table from "./components/Table/Table";
 import Header from "./components/Header/Header";
 import { useQuery } from "@tanstack/react-query";
-import createMachineQueryOptions from "./queryOptions/createMachineQueryOptions";
+import createMachineQueryOptions from "./queries/createMachineQuery";
 
 const App = () => {
   const { data = [], isLoading } = useQuery(createMachineQueryOptions());

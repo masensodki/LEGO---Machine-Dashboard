@@ -22,7 +22,7 @@ const getMachines = async (): Promise<Machine[]> => {
   return json;
 };
 
-export type Machine = {
+export interface Machine {
   id: string;
   name: string;
   state: string;

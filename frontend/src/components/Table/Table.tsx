@@ -1,4 +1,4 @@
-import { Machine } from "../../queryOptions/createMachineQueryOptions";
+import { Machine } from "../../queries/createMachineQuery";
 import "./table.scss";
 
 interface TableProps {
@@ -26,11 +26,11 @@ export default function Table({ data }: TableProps) {
             <tr key={machine.id}>
               <td>{machine.id}</td>
               <td>{machine.name}</td>
-                <td>
+              <td>
                 <span
                   className={`state-button ${String(machine.state).toLowerCase()}`}
                 />
-                </td>
+              </td>
             </tr>
           ))}
         </tbody>
